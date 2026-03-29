@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#canvasDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 900px;
+    height: 800px;
+    background-image: url('ncs.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+canvas {
+    background-color: transparent;
+}
