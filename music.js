@@ -1,5 +1,5 @@
 const bgMusic = document.getElementById('bgMusic');
-bgMusic.volume = 0.5;
+bgMusic.volume = 0.2;
 
 function tryPlayMusic() {
     const playPromise = bgMusic.play();
