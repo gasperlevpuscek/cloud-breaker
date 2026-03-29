@@ -1,2 +1,3 @@
 # bricks
-brick, bric, brda
+The bricks game 
+
