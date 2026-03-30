@@ -3,22 +3,18 @@
 
 <head>
     <title>Bricsk</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
-    <h1>Bricks game (2016)</h1>
-    <p>arrows to move, reload to restart</p>
     <div id="canvasDiv">
         <canvas class="canvas" id="canvas" width="900" height="800"></canvas>
     </div>
-    <audio id="bgMusic" loop preload="auto">
-        <source src="hellcat.mp3" type="audio/mpeg">
-    </audio>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="main.js"></script>
-    <script src="music.js"></script>
+    <script src="scripts/sweetAlerts.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/music.js"></script>
 
     <script>drawIt(); tryPlayMusic();</script>
 </body>
