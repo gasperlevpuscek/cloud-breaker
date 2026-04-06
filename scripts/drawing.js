@@ -16,14 +16,6 @@ function clear() {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
 }
 
-function drawSun(opacity) {
-    var sunWidth = 730;
-    var sunHeight = 730;
-    ctx.save();
-    ctx.globalAlpha = opacity;
-    ctx.drawImage(sunPng, (WIDTH / 2) - (sunWidth / 2), 0, sunWidth, sunHeight);
-    ctx.restore();
-}
 
 
 function cloudParticles(ctx, particles, x, y, spawn = false) {
@@ -78,4 +70,37 @@ function cloudParticles(ctx, particles, x, y, spawn = false) {
 
         ctx.restore();
     }
+}
+
+function fadeInSun(ctx, sunImage, width = 700, height = 700, duration = 900) {
+    if (!sunImage.complete) {
+        sunImage.onload = function () {
+            fadeInSun(ctx, sunImage, width, height, duration);
+        };
+        return;
+    }
+
+    var startTime = null;
+
+    function animate(timestamp) {
+        if (startTime === null) {
+            startTime = timestamp;
+        }
+
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        var drawX = (WIDTH - width) / 2;
+        var drawY = (HEIGHT - height) / 2;
+
+        clear();
+        ctx.save();
+        ctx.globalAlpha = progress;
+        ctx.drawImage(sunImage, drawX, drawY, width, height);
+        ctx.restore();
+
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        }
+    }
+
+    requestAnimationFrame(animate);
 }

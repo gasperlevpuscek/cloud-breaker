@@ -9,11 +9,10 @@ function init_paddle() {
 }
 
 function initbricks() { //inicializacija opek - polnjenje v tabelo
-    NROWS = 6;
-    NCOLS = 6;
+    NROWS = 5;
+    NCOLS = 5;
     destroyedClouds = 0;
     remainingClouds = NROWS * NCOLS;
-    sunFadeCloudCount = NROWS + NCOLS;
     BRICKWIDTH = (WIDTH / NCOLS) - 1;
     BRICKHEIGHT = 80;
     PADDING = 1;

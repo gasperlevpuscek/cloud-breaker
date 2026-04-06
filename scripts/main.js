@@ -17,6 +17,7 @@ var paddleh;
 var paddlew;
 var f = 0;
 var intervalId;
+var gameEnded = false;
 
 
 //bricks
@@ -36,23 +37,20 @@ var cloud3png = new Image();
 cloud3png.src = "../images/cloud3.png";
 var cloudOptions = [cloud1png, cloud2png, cloud3png];
 
-
 var sunPng = new Image();
 sunPng.src = "../images/sun.png";
+
 
 var wooshSound = new Audio("../sounds/woosh.mp3");
 const particles = [];
 var destroyedClouds = 0;
 var remainingClouds = 0;
-var sunFadeCloudCount = 10;
 
-function getSunOpacity() {
-    return Math.min(destroyedClouds / sunFadeCloudCount, 1);
-}
+
 
 function areAllBricksCleared() {
     if (remainingClouds === 0) {
-        setTimeout(winGame, 1000);
+
         return true;
     }
     return false;
@@ -68,8 +66,11 @@ function bounceFromPaddle() {
 }
 
 function draw() {
+    if (gameEnded) {
+        return;
+    }
+
     clear();
-    drawSun(getSunOpacity());
     cloudParticles(ctx, particles, 0, 0, false);
     //premik ploščice levo in desno
     if (rightDown) {
@@ -130,17 +131,22 @@ function draw() {
         dy = -dy;
         cloudParticles(ctx, particles, x, y, true);
         bricks[row][col] = 0;
-        destroyedClouds += 1;
-        remainingClouds -= 1;
+        remainingClouds--;
+        destroyedClouds++;
         wooshSound.volume = 0.5;
         wooshSound.play();
     }
     if (areAllBricksCleared()) {
-        document.getElementById('canvasDiv').classList.add('game-won');
-        drawSun(1);
+        gameEnded = true;
         clearInterval(intervalId);
+        particles.length = 0;
+        fadeInSun(ctx, sunPng);
+        document.getElementById('canvasDiv').classList.add('game-won');
+        setTimeout(winGame, 1200);
         return;
+
     }
+
     if (x + dx > WIDTH - r || x + dx < 0 + r) {
         dx = -dx;
     }
@@ -152,6 +158,7 @@ function draw() {
             bounceFromPaddle();
         }
         else if (y + dy > HEIGHT - r) {
+            gameEnded = true;
             endGame();
             clearInterval(intervalId);
         }
