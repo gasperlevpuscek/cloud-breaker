@@ -38,7 +38,7 @@ h1 .letter {
 @keyframes letterDrop {
     0% {
         opacity: 0;
-        transform: translateY(0px) rotate(-200deg);
+        transform: translateY(0px) rotate(-20deg);
     }
 
     70% {
