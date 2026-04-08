@@ -27,6 +27,26 @@ body {
     border-radius: 8px;
 }
 
+.heartDiv {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 10px;
+    margin-bottom: 6px;
+    height: 60px;
+    width: 200px;
+    background-color: rgba(162, 177, 209, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+
+}
+
+.heartIcon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
 canvas {
     background-color: transparent;
 }

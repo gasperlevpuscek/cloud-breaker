@@ -35,3 +35,15 @@ function winGame() {
         }
     });
 }
+
+
+
+function updateLivesDisplay() {
+    var heartDiv = document.querySelector('.heartDiv');
+    if (heartDiv) {
+        heartDiv.innerHTML = '';
+        for (var i = 0; i < lives; i++) {
+            heartDiv.innerHTML += '<img src="../images/heart.png" alt="Heart" class="heartIcon">';
+        }
+    }
+}

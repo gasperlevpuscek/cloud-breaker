@@ -18,6 +18,8 @@ var paddlew;
 var f = 0;
 var intervalId;
 var gameEnded = false;
+var lives = 3;
+
 
 
 //bricks
@@ -41,7 +43,7 @@ var sunPng = new Image();
 sunPng.src = "../images/sun.png";
 
 
-var wooshSound = new Audio("../sounds/woosh.mp3");
+
 const particles = [];
 var destroyedClouds = 0;
 var remainingClouds = 0;
@@ -133,8 +135,7 @@ function draw() {
         bricks[row][col] = 0;
         remainingClouds--;
         destroyedClouds++;
-        wooshSound.volume = 0.5;
-        wooshSound.play();
+        playWoosh();
     }
     if (areAllBricksCleared()) {
         gameEnded = true;
@@ -158,9 +159,18 @@ function draw() {
             bounceFromPaddle();
         }
         else if (y + dy > HEIGHT - r) {
-            gameEnded = true;
-            endGame();
-            clearInterval(intervalId);
+            lives--;
+            updateLivesDisplay();
+            if (lives <= 0) {
+                gameEnded = true;
+                endGame();
+                clearInterval(intervalId);
+            } else {
+                ballLaunched = false;
+                launchRequested = false;
+                dx = 0;
+                dy = 0;
+            }
         }
     }
     x += dx;
@@ -171,4 +181,5 @@ function drawIt() {
     initbricks();
     init_paddle();
     init();
+    updateLivesDisplay();
 }
