@@ -8,7 +8,7 @@ function playWoosh() {
 }
 
 function playHellcatLoop() {
-    hellcat.volume = 0.0;
+    hellcat.volume = 0.1;
     hellcat.loop = true;
     hellcat.play();
 }
