@@ -9,8 +9,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    background-image: linear-gradient(to top left, #ff8c00, #006aff);
+    background-image: url('../images/titleBg.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -22,7 +21,7 @@ button {
 }
 
 h1 {
-    font-size: 90px;
+    font-size: 110px;
     text-transform: uppercase;
     font-weight: bold;
 }

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Brick</title>
+    <link rel="stylesheet" href="../styles/level2style.css">
+</head>
+
+<body>
+    <div class="rain front-row"></div>
+    <div class="rain back-row"></div>
+
+    <div id="bgdark">
+
+    </div>
+
+    <div class="gameDiv">
+        <div class="topperHolder">
+            <div id="heartDiv">
+                Lives:
+            </div>
+            <div id="scoreDiv">
+                <p id="sctxt">SCORE:</p>
+                <p id="scoreText">0</p>
+            </div>
+            <div id="bestScoreDiv">
+                <p id="bestsctxt">(Best: </p>
+                <p id="bestscoreText">0</p>
+                <p>)</p>
+            </div>
+
+        </div>
+
+        <div id="canvasDiv">
+            <canvas class="canvas" id="canvas" width="900" height="800"></canvas>
+        </div>
+    </div>
+
+    <div class="levelChooseDiv">
+        <a href="level1.html"><button>
+                LVL1
+            </button>
+        </a>
+
+        <a href="level2.html"><button style="background-color: rgb(136, 136, 136);">
+                LVL2
+            </button>
+        </a>
+
+        <a href="level3.html"><button>
+                LVL3
+            </button>
+        </a>
+
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="../scripts/level2/lightning.js"></script>
+<script src="../scripts/level2/sweetAlerts.js"></script>
+<script src="../scripts/level2/sounds.js"></script>
+<script src="../scripts/level2/initialization.js"></script>
+<script src="../scripts/level2/main.js"></script>
+<script src="../scripts/level2/input.js"></script>
+<script src="../scripts/level2/drawing.js"></script>
+<script>
+    window.addEventListener('load', function () {
+        makeItRain();
+        loadBestScore();
+        drawIt();
+        playMusicLoop();
+    });
+</script>
+
+</html>
