@@ -66,13 +66,28 @@ var remainingClouds = 0;
 function areAllBricksCleared() {
     if (remainingClouds === 0) {
         var hd = document.getElementById("heartDiv");
-        hd.style.display = 'none';
+        hd.style.visibility = 'hidden';
 
         var sd = document.getElementById("scoreDiv");
-        sd.style.display = 'none';
+        sd.style.visibility = 'hidden';
 
         var bsd = document.getElementById("bestScoreDiv");
-        bsd.style.display = 'none';
+        bsd.style.visibility = 'hidden';
+
+        var td = document.getElementById("timerDiv");
+        td.style.visibility = 'hidden';
+
+        var sidePanels = document.getElementsByClassName("sidePanel");
+        for (var i = 0; i < sidePanels.length; i++) {
+            sidePanels[i].style.visibility = 'hidden';
+        }
+
+        var rightLevelDivs = document.getElementsByClassName("rightLevelDiv");
+        for (var j = 0; j < rightLevelDivs.length; j++) {
+            rightLevelDivs[j].style.visibility = 'hidden';
+        }
+
+
 
         return true;
     }

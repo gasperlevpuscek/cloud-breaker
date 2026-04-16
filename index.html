@@ -2,15 +2,99 @@
 <html lang="en-US">
 
 <head>
-    <title>Brick</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Cloud Breaker</title>
     <link rel="stylesheet" href="styles/style.css">
+    <style>
+        .titleWord {
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .titleLetter {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(-80px);
+            animation: dropIn 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            will-change: transform, opacity;
+        }
+
+        .titleSpace {
+            display: inline-block;
+            width: 0.28em;
+        }
+
+        @keyframes dropIn {
+            from {
+                opacity: 0;
+                transform: translateY(-80px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>CLOUD BREAKER</h1>
-    <a href="html/level1.html">
-        <button>Play</button>
-    </a>
+    <main class="landingContent">
+        <h1 class="titleWord" id="titleWord">CLOUD BREAKER</h1>
+
+        <div class="menuButtons">
+            <a href="html/level1.html" class="menuLink">
+                <button type="button" class="menuButton playButton">PLAY</button>
+            </a>
+
+            <button type="button" id="aboutBtn" class="menuButton aboutButton">ABOUT</button>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        (function () {
+            var titleElement = document.getElementById('titleWord');
+            var text = titleElement.textContent;
+            var delayIndex = 0;
+
+            titleElement.textContent = '';
+
+            for (var i = 0; i < text.length; i++) {
+                var character = text[i];
+
+                if (character === ' ') {
+                    var space = document.createElement('span');
+                    space.className = 'titleSpace';
+                    space.innerHTML = '&nbsp;';
+                    titleElement.appendChild(space);
+                    continue;
+                }
+
+                var letter = document.createElement('span');
+                letter.className = 'titleLetter';
+                letter.textContent = character;
+                letter.style.animationDelay = (delayIndex * 0.12) + 's';
+                titleElement.appendChild(letter);
+                delayIndex++;
+            }
+
+            var aboutBtn = document.getElementById('aboutBtn');
+            aboutBtn.addEventListener('click', function () {
+                Swal.fire({
+                    title: 'About',
+                    html: '<br>The Bricks game is a game where you need to break all clouds.<br><br><b>Author:</b> Gašper Levpušček<br>',
+                    icon: 'info',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#4fa0dd'
+                });
+            });
+        })();
+    </script>
 </body>
 
 </html>

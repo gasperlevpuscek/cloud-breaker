@@ -9,11 +9,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../images/background1.png');
+    background-image: url('../images/background11.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Montserrat", sans-serif;
 }
 
 .gameWrapper {

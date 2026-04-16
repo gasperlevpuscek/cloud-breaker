@@ -7,17 +7,51 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    background-image: url('../images/titleBg.jpg');
+    background-image: url('../images/titleImg.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: "Montserrat", sans-serif;
+    padding: 48px 20px 60px;
+    gap: 36px;
 }
 
-button {
-    width: 300px;
-    height: 100px;
+.landingContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    margin-top: 320px;
+}
+
+.menuButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.menuLink {
+    text-decoration: none;
+}
+
+.menuButton {
+    width: 260px;
+    height: 88px;
+    background-color: rgb(212, 212, 212);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 32px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.menuButton:hover {
+    filter: brightness(0.93);
 }
 
 h1 {

@@ -4,7 +4,7 @@ function endGame() {
     Swal.fire({
         title: "You Lose",
         text: "Ball touched the bottom",
-        confirmButtonColor: "#d64330",
+        confirmButtonColor: "#dd4f88",
         confirmButtonText: "Retry",
         allowOutsideClick: false,
         allowEscapeKey: false,
@@ -25,10 +25,10 @@ function winGame() {
         title: "You Win",
         html: `You cleared all the clouds<br>
                Your score: ${score}`,
-        confirmButtonColor: "#0a9952",
+        confirmButtonColor: "#4fa0dd",
         confirmButtonText: "Retry",
         showDenyButton: true,
-        denyButtonColor: "#3c6be0",
+        denyButtonColor: "#dd4f88",
         denyButtonText: "Next Level",
         allowOutsideClick: false,
         allowEscapeKey: false,
@@ -52,13 +52,13 @@ function showHelpAlert() {
                 <p><b>Move:</b> Left / Right arrow keys</p>
                 <p><b>Launch:</b> Press Space</p>
                 <p><b>Objective:</b> Destroy all clouds</p>
-                <hr style="border:0; border-top:1px solid #a8c9ff; margin:10px 0;">
+                <hr style="border:0; border-top:1px solid #8fc6f0; margin:10px 0;">
                 <p><b>Lives:</b> You have 3 lives</p>
                 <p>You lose a life when the ball hits the bottom</p>
             </div>
         `,
         confirmButtonText: "Ok",
-        confirmButtonColor: "#68aef9",
+        confirmButtonColor: "#4fa0dd",
 
         background: "#eaf4ff",
         color: "#1b2a41",

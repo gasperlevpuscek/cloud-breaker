@@ -5,7 +5,7 @@ function endGame() {
     Swal.fire({
         title: "You Lose",
         text: "Ball touched the bottom",
-        confirmButtonColor: "#d64330",
+        confirmButtonColor: "#dd4f88",
         confirmButtonText: "Retry",
         allowOutsideClick: false,
         allowEscapeKey: false,
@@ -28,10 +28,10 @@ function winGame() {
         title: "You Win",
         html: `You cleared all the clouds<br>
                Your score: ${score}`,
-        confirmButtonColor: "#0a9952",
+        confirmButtonColor: "#339ae9",
         confirmButtonText: "Retry",
         showDenyButton: true,
-        denyButtonColor: "#3c6be0",
+        denyButtonColor: "#dd4f88",
         denyButtonText: "Level 1",
         allowOutsideClick: false,
         allowEscapeKey: false,
@@ -95,8 +95,8 @@ function showHelpAlertLevel2() {
                 <p><b>Lightning:</b> If it hits your paddle, you get stunned for a short time</p>
             </div>
         `,
-        confirmButtonText: "Start Level 2",
-        confirmButtonColor: "#3c6be0",
+        confirmButtonText: "Ok",
+        confirmButtonColor: '#4fa0dd',
         background: "#1e2a38",
         color: "#ffffff",
         backdrop: "rgba(0,0,0,0.7)",
