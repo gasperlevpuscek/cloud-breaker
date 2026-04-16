@@ -49,7 +49,7 @@ function drawLightning() {
     if (!lightningStrike) {
         return;
     }
-    ctx.drawImage(lightningImg, lightningStrike.x - 35, lightningStrike.y, 70, 1000);
+    ctx.drawImage(lightningImg, lightningStrike.x - 40, lightningStrike.y, 80, 1000);
 }
 
 

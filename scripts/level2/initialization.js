@@ -24,7 +24,7 @@ function initbricks() { //inicializacija opek - polnjenje v tabelo
         brickImages[i] = new Array(NCOLS);
         for (var j = 0; j < NCOLS; j++) {
             bricks[i][j] = 1;
-            brickImages[i][j] = Math.random() < 0.3 ? raincloudPng : cloudOptions[Math.floor(Math.random() * cloudOptions.length)];
+            brickImages[i][j] = Math.random() < 0.34 ? raincloudPng : cloudOptions[Math.floor(Math.random() * cloudOptions.length)];
             clouds.push({
                 row: i,
                 col: j,
