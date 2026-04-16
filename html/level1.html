@@ -7,56 +7,68 @@
 </head>
 
 <body>
-    <div class="gameDiv">
-        <div class="topperHolder">
-            <div id="heartDiv">
-                Lives:
+    <div class="gameWrapper">
+        <div class="gameDiv">
+
+            <div class="topperHolder">
+                <div id="heartDiv">
+                    Lives:
+                </div>
+
+                <div id="scoreDiv">
+                    <p id="sctxt">SCORE:</p>
+                    <p id="scoreText">0</p>
+                </div>
+
+                <div id="bestScoreDiv">
+                    <p id="bestsctxt">(Best:</p>
+                    <p id="bestscoreText">0</p>
+                    <p>)</p>
+                </div>
+
+                <div id="timerDiv">
+                    <p id="timerText">00:00</p>
+                </div>
             </div>
-            <div id="scoreDiv">
-                <p id="sctxt">SCORE:</p>
-                <p id="scoreText">0</p>
+
+            <div class="mainGameRow">
+                <div class="sidePanel leftControlDiv">
+                    <button type="button" id="helpBtn">HELP</button>
+                    <button type="button" id="pauseBtn">PAUSE</button>
+                    <button type="button" id="retryBtn">RETRY</button>
+                </div>
+
+                <div id="canvasDiv">
+                    <canvas class="canvas" id="canvas" width="900" height="800"></canvas>
+                </div>
+
+                <div class="sidePanel rightLevelDiv">
+                    <a href="level1.html">
+                        <button type="button" class="activeLevelBtn">LVL1</button>
+                    </a>
+
+                    <a href="level2.html">
+                        <button type="button">LVL2</button>
+                    </a>
+                </div>
             </div>
-            <div id="bestScoreDiv">
-                <p id="bestsctxt">(Best: </p>
-                <p id="bestscoreText">0</p>
-                <p>)</p>
-            </div>
 
-        </div>
-
-
-
-        <div id="canvasDiv">
-            <canvas class="canvas" id="canvas" width="900" height="800"></canvas>
-        </div>
-
-
-        <div class="levelChooseDiv">
-            <a href="level1.html"> <button style="background-color: rgb(136, 136, 136);">
-                    LVL1
-                </button>
-            </a>
-
-            <a href="level2.html"> <button>
-                    LVL2
-                </button>
-            </a>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../scripts/level1/sweetAlerts.js"></script>
+    <script src="../scripts/level1/sounds.js"></script>
+    <script src="../scripts/level1/initialization.js"></script>
+    <script src="../scripts/level1/main.js"></script>
+    <script src="../scripts/level1/input.js"></script>
+    <script src="../scripts/level1/drawing.js"></script>
+    <script>
+        loadBestScore();
+        drawIt();
+        playHellcatLoop();
+    </script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="../scripts/level1/sweetAlerts.js"></script>
-<script src="../scripts/level1/sounds.js"></script>
-<script src="../scripts/level1/initialization.js"></script>
-<script src="../scripts/level1/main.js"></script>
-<script src="../scripts/level1/input.js"></script>
-<script src="../scripts/level1/drawing.js"></script>
-<script>
-    loadBestScore();
-    drawIt();
-    playHellcatLoop();
-</script>
 
 </html>

@@ -37,9 +37,65 @@ function clearRain() {
 }
 
 
-function lightningFlash() {
-    document.body.style.background = "#ffffff";
-    setTimeout(() => {
-        document.body.style.background = "";
-    }, 10);
+var lightningStrike = null;
+var lightningTimeoutId = null;
+var paddleStunned = false;
+var paddleStunTimeoutId = null;
+var lightningImg = new Image();
+lightningImg.src = "../images/lightning.png";
+
+
+function drawLightning() {
+    if (!lightningStrike) {
+        return;
+    }
+    ctx.drawImage(lightningImg, lightningStrike.x - 35, lightningStrike.y, 70, 1000);
+}
+
+
+function lightningEffect() {
+    var rowheight = BRICKHEIGHT + PADDING + f / 2;
+    var colwidth = BRICKWIDTH + PADDING + f / 2;
+    var row = Math.floor(y / rowheight);
+    var col = Math.floor(x / colwidth);
+
+    if (row < 0 || row >= NROWS || col < 0 || col >= NCOLS) {
+        return null;
+    }
+
+    var hitX = (col * (BRICKWIDTH + PADDING)) + PADDING + (BRICKWIDTH / 2);
+    var hitY = (row * (BRICKHEIGHT + PADDING)) + PADDING + (BRICKHEIGHT / 2);
+
+    lightningStrike = {
+        x: hitX,
+        y: hitY
+    };
+
+    if (hitX >= paddlex - 10 && hitX <= paddlex + paddlew + 10) {
+        paddleStunned = true;
+
+        if (paddleStunTimeoutId !== null) {
+            clearTimeout(paddleStunTimeoutId);
+        }
+
+        paddleStunTimeoutId = setTimeout(function () {
+            paddleStunned = false;
+            paddleStunTimeoutId = null;
+        }, 500);
+    }
+
+    if (lightningTimeoutId !== null) {
+        clearTimeout(lightningTimeoutId);
+    }
+
+    lightningTimeoutId = setTimeout(function () {
+        lightningStrike = null;
+        lightningTimeoutId = null;
+    }, 300);
+
+    return {
+        x: hitX,
+        y: hitY
+    };
+
 }

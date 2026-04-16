@@ -135,18 +135,20 @@ function draw() {
     clear();
     cloudParticles(ctx, particles, 0, 0, false);
     //premik ploščice levo in desno
-    if (rightDown) {
-        if ((paddlex + paddlew) < WIDTH) {
-            paddlex += 8;
-        } else {
-            paddlex = WIDTH - paddlew;
+    if (!paddleStunned) {
+        if (rightDown) {
+            if ((paddlex + paddlew) < WIDTH) {
+                paddlex += 8;
+            } else {
+                paddlex = WIDTH - paddlew;
+            }
         }
-    }
-    else if (leftDown) {
-        if (paddlex > 0) {
-            paddlex -= 8;
-        } else {
-            paddlex = 0;
+        else if (leftDown) {
+            if (paddlex > 0) {
+                paddlex -= 8;
+            } else {
+                paddlex = 0;
+            }
         }
     }
 
@@ -176,6 +178,8 @@ function draw() {
         }
     }
 
+    drawLightning();
+
     var rowheight = BRICKHEIGHT + PADDING + f / 2; //Smo zadeli opeko?
     var colwidth = BRICKWIDTH + PADDING + f / 2;
     var row = Math.floor(y / rowheight);
@@ -191,14 +195,12 @@ function draw() {
         remainingClouds--;
         destroyedClouds++;
         if (hitBrickImage === raincloudPng) {
-            lightningFlash();
             playLightning();
+            lightningEffect();
         } else {
             playWoosh();
         }
-
         reduceBgOpacity();
-
     }
     if (areAllBricksCleared()) {
         gameEnded = true;
