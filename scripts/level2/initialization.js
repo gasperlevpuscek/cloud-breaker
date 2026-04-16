@@ -18,12 +18,21 @@ function initbricks() { //inicializacija opek - polnjenje v tabelo
     PADDING = 1;
     bricks = new Array(NROWS);
     brickImages = new Array(NROWS);
+    clouds = [];
     for (var i = 0; i < NROWS; i++) {
         bricks[i] = new Array(NCOLS);
         brickImages[i] = new Array(NCOLS);
         for (var j = 0; j < NCOLS; j++) {
             bricks[i][j] = 1;
-            brickImages[i][j] = Math.random() < 0.2 ? raincloudPng : cloudOptions[Math.floor(Math.random() * cloudOptions.length)];
+            brickImages[i][j] = Math.random() < 0.3 ? raincloudPng : cloudOptions[Math.floor(Math.random() * cloudOptions.length)];
+            clouds.push({
+                row: i,
+                col: j,
+                x: (j * (BRICKWIDTH + PADDING)) + PADDING,
+                baseY: (i * (BRICKHEIGHT + PADDING)) + PADDING,
+                drawY: (i * (BRICKHEIGHT + PADDING)) + PADDING,
+                bobPhase: Math.random() * Math.PI * 2
+            });
         }
     }
 }

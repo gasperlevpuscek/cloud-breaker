@@ -4,9 +4,9 @@ var leftDown = false;
 var launchRequested = false;
 // Keyboard input
 function onKeyDown(evt) {
-    if (evt.keyCode == 39)
+    if (evt.keyCode == 39 || evt.keyCode == 68)
         rightDown = true;
-    else if (evt.keyCode == 37) leftDown = true;
+    else if (evt.keyCode == 37 || evt.keyCode == 65) leftDown = true;
     else if (evt.keyCode == 32) {
         launchRequested = true;
         evt.preventDefault();
@@ -19,9 +19,9 @@ function onKeyDown(evt) {
 }
 
 function onKeyUp(evt) {
-    if (evt.keyCode == 39)
+    if (evt.keyCode == 39 || evt.keyCode == 68)
         rightDown = false;
-    else if (evt.keyCode == 37) leftDown = false;
+    else if (evt.keyCode == 37 || evt.keyCode == 65) leftDown = false;
 }
 $(document).keydown(onKeyDown);
 $(document).keyup(onKeyUp);

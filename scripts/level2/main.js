@@ -35,6 +35,7 @@ var BRICKWIDTH;
 var BRICKHEIGHT;
 var PADDING;
 var brickImages;
+var clouds;
 
 var cloud1png = new Image();
 cloud1png.src = "../images/cloud1.png";
@@ -178,11 +179,14 @@ function draw() {
 
 
     //riši opeke
-    for (var i = 0; i < NROWS; i++) {
-        for (var j = 0; j < NCOLS; j++) {
-            if (bricks[i][j] == 1) {
-                ctx.drawImage(brickImages[i][j], (j * (BRICKWIDTH + PADDING)) + PADDING, (i * (BRICKHEIGHT + PADDING)) + PADDING, BRICKWIDTH, BRICKHEIGHT);
-            }
+    var time = Date.now();
+    for (var i = 0; i < clouds.length; i++) {
+        var cloud = clouds[i];
+        var bobOffset = Math.sin(time / 200 + cloud.bobPhase) * 2;
+        cloud.drawY = cloud.baseY + bobOffset;
+
+        if (bricks[cloud.row][cloud.col] == 1) {
+            ctx.drawImage(brickImages[cloud.row][cloud.col], cloud.x, cloud.drawY, BRICKWIDTH, BRICKHEIGHT);
         }
     }
 
