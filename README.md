@@ -102,41 +102,6 @@ This keeps gameplay pause logic focused on the ball+paddle system without overco
 |- sounds/
 ```
 
-## Running The Game
-
-Because this project uses static assets (audio, images, scripts), it is best run through a local HTTP server.
-
-Quick options:
-
-1. VS Code Live Server extension
-2. Python simple server:
-
-```bash
-python3 -m http.server 8000
-```
-
-Then open:
-
-```text
-http://localhost:8000/
-```
-
-Start from the main menu and click Play.
-
-## Dependencies
-
-External libraries loaded from CDN:
-- SweetAlert2
-- jQuery
-
-No build tool or package manager is required for the current version.
-
-## Known Notes
-
-- Autoplay policies in some browsers may block audio until user interaction.
-- Best scores are browser-local (per browser/profile/device).
-- Level 2 rain and lightning visuals are intentionally tied to atmosphere and hazard readability rather than strict realism.
-
 ## Credits
 
 ### Music
