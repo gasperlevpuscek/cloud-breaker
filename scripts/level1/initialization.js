@@ -9,8 +9,8 @@ function init_paddle() {
 }
 
 function initbricks() { //inicializacija opek - polnjenje v tabelo
-    NROWS = 4;
-    NCOLS = 4;
+    NROWS = 1;
+    NCOLS = 1;
     destroyedClouds = 0;
     remainingClouds = NROWS * NCOLS;
     BRICKWIDTH = (WIDTH / NCOLS) - 1;

@@ -1,20 +1,36 @@
 
 function endGame() {
     saveBestScore();
-
     Swal.fire({
-        title: "You Lose",
-        text: "Ball touched the bottom",
-        confirmButtonColor: "#dd4f88",
+        title: "YOU LOST",
+        html: `
+            <div class="lose-content">
+                <p class="lose-message">The ball slipped past your paddle.</p>
+                <div class="lose-stats">
+                    Score: <span>${score}</span><br>
+                    Time: <span>${document.getElementById("timerText")?.textContent || "00:00"}</span>
+                </div>
+            </div>
+        `,
         confirmButtonText: "Retry",
+        confirmButtonColor: "#4aa3ff",
+        showDenyButton: true,
+        denyButtonText: "Main Menu",
+        reverseButtons: true,
         allowOutsideClick: false,
         allowEscapeKey: false,
-        allowEnterKey: false,
-        backdrop: false
-
+        backdrop: false,
+        customClass: {
+            popup: 'lose-swal',
+            title: 'lose-title',
+            confirmButton: 'retry-btn',
+            denyButton: 'menu-btn'
+        }
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.reload();
+        } else if (result.isDenied) {
+            window.location.href = "../index.html";
         }
     });
 }
@@ -23,27 +39,42 @@ function endGame() {
 
 function winGame() {
     saveBestScore();
-
     Swal.fire({
-        html: `<h1>You win!</h1><br>You cleared all the clouds in ${getFormattedElapsedTime()}<br>
-               Your score: ${score}`,
-        confirmButtonColor: "#4fa0dd",
+        html: `
+            <div class="win-content">
+                <h2 class="win-title">YOU WIN</h2>
+                <p class="win-message">
+                    You cleared all the clouds in ${getFormattedElapsedTime()}
+                </p>
+                <div class="win-score">
+                    Score: <span>${score}</span>
+                </div>
+            </div>
+        `,
+        showConfirmButton: true,
         confirmButtonText: "Retry",
         showDenyButton: true,
-        denyButtonColor: "#dccd5e",
-        denyButtonText: "Next Level",
+        denyButtonText: "Menu",
+        showCancelButton: true,
+        cancelButtonText: "Next Level",
         allowOutsideClick: false,
         allowEscapeKey: false,
         allowEnterKey: false,
         backdrop: false,
         customClass: {
-            popup: 'my-swal-popup'
+            popup: 'my-swal-popup win-swal',
+            confirmButton: 'retry-btn',
+            denyButton: 'next-btn',
+            cancelButton: 'menu-btn',
+            actions: 'win-actions'
         }
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.reload();
-        } else if (result.isDenied) {
+        } else if (result.isDismissed) {
             window.location.href = "level1.html";
+        } else if (result.isDenied) {
+            window.location.href = "../index.html";
         }
     });
 }
@@ -83,27 +114,32 @@ if (pauseBtn) {
 
 function showHelpAlertLevel2() {
     Swal.fire({
-        title: "Level 2 Rules",
+        title: "How To Play",
         html: `
             <div style="text-align:left; font-size:15px; line-height:1.6;">
                 <p><b>Move:</b> Left / Right arrow keys</p>
                 <p><b>Launch:</b> Press Space</p>
                 <p><b>Objective:</b> Destroy all clouds</p>
-                <hr style="border:0; border-top:1px solid rgba(255,255,255,0.18); margin:10px 0;">
+                <hr style="border:0; border-top:1px solid #8fc6f0; margin:10px 0;">
                 <p><b>Lives:</b> You have 3 lives</p>
                 <p>You lose a life when the ball hits the bottom</p>
-                <hr style="border:0; border-top:1px solid rgba(255,255,255,0.18); margin:10px 0;">
                 <p><b>Dark clouds:</b> Hitting a dark cloud can spawn lightning</p>
                 <p><b>Lightning:</b> If it hits your paddle, you get stunned for a short time</p>
             </div>
         `,
         confirmButtonText: "Ok",
-        confirmButtonColor: '#4fa0dd',
-        background: "#1e2a38",
-        color: "#ffffff",
-        backdrop: "rgba(0,0,0,0.7)",
+        confirmButtonColor: "#4fa0dd",
+        background: "#eaf4ff",
+        color: "#1b2a41",
+        backdrop: "rgba(100, 150, 255, 0.25)",
         customClass: {
-            popup: "game-alert-dark"
+            popup: "game-alert-bright"
+        },
+        showClass: {
+            popup: "animate__animated animate__fadeInDown"
+        },
+        hideClass: {
+            popup: "animate__animated animate__fadeOutUp"
         }
     });
 }

@@ -2,17 +2,35 @@
 function endGame() {
     saveBestScore();
     Swal.fire({
-        title: "You Lose",
-        text: "Ball touched the bottom",
-        confirmButtonColor: "#dd4f88",
+        title: "YOU LOST",
+        html: `
+            <div class="lose-content">
+                <p class="lose-message">The ball slipped past your paddle.</p>
+                <div class="lose-stats">
+                    Score: <span>${score}</span><br>
+                    Time: <span>${document.getElementById("timerText")?.textContent || "00:00"}</span>
+                </div>
+            </div>
+        `,
         confirmButtonText: "Retry",
+        confirmButtonColor: "#4aa3ff",
+        showDenyButton: true,
+        denyButtonText: "Main Menu",
+        reverseButtons: true,
         allowOutsideClick: false,
         allowEscapeKey: false,
-        allowEnterKey: false,
-        backdrop: false
+        backdrop: false,
+        customClass: {
+            popup: 'lose-swal',
+            title: 'lose-title',
+            confirmButton: 'retry-btn',
+            denyButton: 'menu-btn'
+        }
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.reload();
+        } else if (result.isDenied) {
+            window.location.href = "../index.html";
         }
     });
 }
@@ -22,26 +40,42 @@ function endGame() {
 function winGame() {
     saveBestScore();
     Swal.fire({
-
-        html: `<h1>You win!</h1><br>You cleared all the clouds in ${getFormattedElapsedTime()}<br>
-               Your score: ${score}`,
-        confirmButtonColor: "#4fa0dd",
+        html: `
+            <div class="win-content">
+                <h2 class="win-title">YOU WIN</h2>
+                <p class="win-message">
+                    You cleared all the clouds in ${getFormattedElapsedTime()}
+                </p>
+                <div class="win-score">
+                    Score: <span>${score}</span>
+                </div>
+            </div>
+        `,
+        showConfirmButton: true,
         confirmButtonText: "Retry",
         showDenyButton: true,
-        denyButtonColor: "#dccd5e",
-        denyButtonText: "Next Level",
+        denyButtonText: "Menu",
+        showCancelButton: true,
+        cancelButtonText: "Next Level",
         allowOutsideClick: false,
         allowEscapeKey: false,
         allowEnterKey: false,
         backdrop: false,
+
         customClass: {
-            popup: 'my-swal-popup'
+            popup: 'my-swal-popup win-swal',
+            confirmButton: 'retry-btn',
+            denyButton: 'next-btn',
+            cancelButton: 'menu-btn',
+            actions: 'win-actions'
         }
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.reload();
-        } else if (result.isDenied) {
+        } else if (result.isDismissed) {
             window.location.href = "level2.html";
+        } else if (result.isDenied) {
+            window.location.href = "../index.html";
         }
     });
 }
