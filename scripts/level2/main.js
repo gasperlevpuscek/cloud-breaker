@@ -90,6 +90,11 @@ function areAllBricksCleared() {
             rightLevelDivs[j].style.visibility = 'hidden';
         }
 
+        var tth = document.querySelector('.topperTopperHolder');
+        if (tth) {
+            tth.style.visibility = 'hidden';
+        }
+
         return true;
     }
     return false;

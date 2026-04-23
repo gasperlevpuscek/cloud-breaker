@@ -100,7 +100,7 @@ function showHelpAlert() {
         background: "#eaf4ff",
         color: "#1b2a41",
 
-        backdrop: "rgba(100, 150, 255, 0.25)",
+        backdrop: "rgba(0, 0, 0, 0.5)",
 
         customClass: {
             popup: "game-alert-bright"
@@ -116,8 +116,14 @@ function showHelpAlert() {
 }
 
 
+var helpButtonIcon = {
+    path: '../images/question.png',
+    alt: 'Help'
+};
+
 var helpBtn = document.getElementById('helpBtn');
 if (helpBtn) {
+    setHelpButtonIcon();
     helpBtn.addEventListener('click', showHelpAlert);
 }
 
@@ -128,11 +134,44 @@ if (retryBtn) {
     });
 }
 
+var pauseButtonIcons = {
+    paused: {
+        path: '../images/play.png',
+        alt: 'Play'
+    },
+    running: {
+        path: '../images/pause.png',
+        alt: 'Pause'
+    }
+};
+
+function setHelpButtonIcon() {
+    if (!helpBtn) {
+        return;
+    }
+
+    helpBtn.innerHTML = '<img src="' + helpButtonIcon.path + '" alt="' + helpButtonIcon.alt + '" class="helpIcon">';
+    helpBtn.setAttribute('aria-label', helpButtonIcon.alt);
+}
+
+function setPauseButtonIcon(isGamePaused) {
+    if (!pauseBtn) {
+        return;
+    }
+
+    var currentIcon = isGamePaused ? pauseButtonIcons.paused : pauseButtonIcons.running;
+    pauseBtn.innerHTML = '<img src="' + currentIcon.path + '" alt="' + currentIcon.alt + '" class="pauseIcon">';
+    pauseBtn.setAttribute('aria-label', currentIcon.alt);
+}
+
 var pauseBtn = document.getElementById('pauseBtn');
 if (pauseBtn) {
+    var initialPauseState = (typeof isPaused !== 'undefined') ? isPaused : false;
+    setPauseButtonIcon(initialPauseState);
+
     pauseBtn.addEventListener('click', function () {
         isPaused = !isPaused;
-        pauseBtn.textContent = isPaused ? 'PLAY' : 'PAUSE';
+        setPauseButtonIcon(isPaused);
     });
 }
 
