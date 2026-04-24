@@ -40,24 +40,32 @@ body {
 .menuButton {
     width: 260px;
     height: 88px;
-    background-color: rgb(212, 212, 212);
-    border: 2px solid rgba(0, 0, 0, 0.5);
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
     font-size: 32px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    border: 5px solid white !important;
+    background-color: #acacac6b !important;
+    color: white;
+    transition: box-shadow 0.2s;
 }
 
 .menuButton:hover {
     filter: brightness(0.93);
+  box-shadow: 0px 0px 26px 3px rgba(88,194,227,0.75);
+-webkit-box-shadow: 0px 0px 26px 3px rgba(88,194,227,0.75);
+-moz-box-shadow: 0px 0px 26px 3px rgba(88,194,227,0.75);
+
 }
 
 h1 {
     font-size: 110px;
     text-transform: uppercase;
     font-weight: bold;
+    color: white;
+    text-shadow: 0 1px 0 #CCCCCC, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15), 2px 2px 3px rgba(206,89,55,0);
 }
 
 h1 .letter {
@@ -89,3 +97,4 @@ h1 .space {
     display: inline-block;
     width: 0.35em;
 }
+
